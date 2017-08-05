@@ -1,0 +1,12 @@
+# 构建 docker registry 容器
+version: "2"
+services:
+  registry:
+    image: registry
+    expose:
+      - "5000"
+    ports:
+      - "5000:5000"
+    volumes:
+      - "E:/home/compose/:/var/lib/registry/"
+    restart: always
