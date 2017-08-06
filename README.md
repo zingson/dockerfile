@@ -2,13 +2,15 @@
 
 Github: https://github.com/zingson/Dockerfile.git
 
-本项目用于收集常用镜像资源，通过Dockerfile快速构建镜像。 关于Docker的安装，请自行解决。
+本项目用于收集常用镜像资源，通过Dockerfile快速构建镜像。
 
-配置说明，请参考镜像名目录中readme.md文件说明，目前很多还不完善，陆续完善中......
+关于Docker的安装，请自行解决。
+
+没有注释说明registry地址的镜像是基于官方源构建，对于私有registry镜像，请查看具体Dockerfile文件中注释说明。
 
 
 
-## 目录说明
+## 项目目录
 - 一级目录为程序镜像名
 - 二级目录为基于官方源的版本或者运行环境程序版本
 - 版本下包含Dockerfile文件与docker-compose.yml文件来构建镜像和容器
@@ -21,9 +23,11 @@ Github: https://github.com/zingson/Dockerfile.git
 
 Author: Zengs
 Email: zingsono@gmail.com
-QQ: 916931772
+QQ/WX: 916931772
 
-如有错误或者建议，欢迎指出，谢谢！
+业余时间整理，如有错误或者建议，欢迎指正。
+
+目前还有很多不完善，努力中......
 
 <br><br><br>
 
