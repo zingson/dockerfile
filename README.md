@@ -11,7 +11,9 @@ Github: https://github.com/zingson/Dockerfile.git
 
 
 官方默认镜像源：https://registry.hub.docker.com
+
 国内官方镜像源：https://www.docker-cn.com/registry-mirror
+
 阿里云专属镜像源：https://xxxxxx.mirror.aliyuncs.com
 
 
@@ -23,13 +25,15 @@ Github: https://github.com/zingson/Dockerfile.git
 
 
 
-推荐项目部署路径
+推荐项目部署宿主机映射目录结构
 
 ```
-data
+docker
   projectName
-     log
-     app
+     log  日志
+     data   数据文件
+     webapps 应用程序
+     conf  环境配置
      Dockerfile
      compose.yml
      build.sh
