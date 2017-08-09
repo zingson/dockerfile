@@ -4,10 +4,15 @@ Github: https://github.com/zingson/Dockerfile.git
 
 本项目用于收集常用镜像资源，通过Dockerfile快速构建镜像。
 
-关于Docker的安装，请自行解决。
+关于Docker安装，请参考官网 https://www.docker.com/
+
 
 没有注释说明registry地址的镜像是基于官方源构建，对于私有registry镜像，请查看具体Dockerfile文件中注释说明。
 
+
+官方默认镜像源：https://registry.hub.docker.com
+国内官方镜像源：https://www.docker-cn.com/registry-mirror
+阿里云专属镜像源：https://xxxxxx.mirror.aliyuncs.com
 
 
 ## 项目目录
