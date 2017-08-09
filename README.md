@@ -23,6 +23,19 @@ Github: https://github.com/zingson/Dockerfile.git
 
 
 
+推荐项目部署路径
+
+```
+data
+  projectName
+     log
+     app
+     Dockerfile
+     compose.yml
+     build.sh
+```
+
+
 <br><br><br>
 ---------------------------------------------------------------------------
 
