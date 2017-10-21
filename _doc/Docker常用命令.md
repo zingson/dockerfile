@@ -55,6 +55,8 @@ docker rmi                               删除镜像
 docker top name                    查看容器运行的进程 
 docker stats  name                监控容器CPU内存使用情况 
 docker tag 
+docker cp  宿主机路径  容器名:容器路径   拷贝文件到容器
+docker cp  容器名:容器路径  宿主机路径    拷贝文件到宿主机
 
 将镜像推送到registry：
   $ sudo docker login --username=916931772@qq.com registry.cn-hangzhou.aliyuncs.com
