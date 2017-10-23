@@ -1,13 +1,23 @@
+#!/bin/sh
 
+# Nginx容器创建脚本
 
+# 停止容器
+sudo docker stop nginx
+# 删除容器
+sudo docker rm nginx
+
+# 运行nginx容器,依赖php7
 sudo docker run \
     --name nginx \
     -p 81:80 \
+    --link php7:php7alias \
     -v /apps/nginx/html:/usr/share/nginx/html \
     -v /apps/nginx/conf/nginx.conf:/etc/nginx/nginx.conf \
     -v /apps/nginx/conf/conf.d:/etc/nginx/conf.d \
     --privileged=true \
     -d nginx:1.12.1-alpine \
 
+# 完成
 
 
