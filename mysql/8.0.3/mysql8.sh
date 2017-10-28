@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Mysql8容器创建脚本
+# Mysql8容器创建脚本,mysql8支持动态修改配置，所以无需映射配置文件目录
 
 # pull image
 sudo docker pull mysql:8.0.3
@@ -11,15 +11,16 @@ sudo docker stop mysql8
 # rm container
 sudo docker rm mysql8
 
-# 运行容器
+# run container
 sudo docker run \
     --name mysql8 \
     -e MYSQL_ROOT_PASSWORD=root \
-    -p 3306:3306 \
-    -v /apps/mysql/data:/var/lib/mysql \
+    --publish  3306:3306 \
+    --volume /apps/mysql/data:/var/lib/mysql \
+    --restart always \
     --privileged=true \
-    -d mysql:8.0.3
+    --detach  mysql:8.0.3
 
-# 完成
+# ENDex
 
 

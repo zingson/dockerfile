@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # create gitlab-ce
 
@@ -14,7 +14,7 @@ sudo docker rm gitlab-ce
 # run container
 sudo docker run \
  --hostname gitlab.example.com \
- --publish 443:443 --publish 80:80 --publish 221:22 \
+ --publish 4431:443 --publish 8001:80 \
  --name gitlab-ce \
  --restart always \
  --privileged=true \
