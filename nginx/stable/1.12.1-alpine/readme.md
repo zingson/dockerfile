@@ -10,7 +10,7 @@
 
 1. 获取指定版本镜像
 
-    pull nginx:1.12.1-alpine
+    sudo docker pull nginx:1.12.1-alpine
 
    
 2. 运行容器，配置端口与映射路径等配置信息(参数前面是本机路径，后面是容器路径)

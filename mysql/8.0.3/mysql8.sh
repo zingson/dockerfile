@@ -2,9 +2,13 @@
 
 # Mysql8容器创建脚本
 
-# 停止容器
+# pull image
+sudo docker pull mysql:8.0.3
+
+# stop container
 sudo docker stop mysql8
-# 删除容器
+
+# rm container
 sudo docker rm mysql8
 
 # 运行容器
@@ -14,7 +18,7 @@ sudo docker run \
     -p 3306:3306 \
     -v /apps/mysql/data:/var/lib/mysql \
     --privileged=true \
-    -d mysql:8.0.3 \
+    -d mysql:8.0.3
 
 # 完成
 

@@ -5,7 +5,7 @@ alpine3.4
 
 1. 获取镜像    
        
-       docker pull php:7.1.10-fpm-alpine3.4   
+       sudo docker pull php:7.1.10-fpm-alpine3.4   
        
 2. 启动
 
