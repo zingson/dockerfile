@@ -1,30 +1,30 @@
 使用Docker的macvlan为容器提供桥接网络及跨主机通讯
+=============================================================
 
-对于了解Docker容器网络的朋友，我想对虚拟机的网络也不会陌生，毕竟我们是跟随这个时代一起学习和进步的人。相比VM，Docker的网络也在逐步走向成熟，本文主要针对其中的macvlan做下简单的介绍。
+## 什么是 macvlan？
 
-Why macvlan？
+VM中的NAT对应Docker中的bridge，虽然叫bridge，但和VM的bridged网络却不一样，其原理是在宿主机上虚出一块网卡bridge0，然后所有容器会桥接在这块网卡的网段上。
+默认情况下容器能访问外部网络，但外部网络无法访问容器，因此需要通过暴露容器端口的方式（docker run -p）让外部网络访问容器内的服务。
+此时docker会在宿主机上建立一条NAT路由规则，将子网中容器内的服务通过端口转发（port forwarding）的方式暴露给外部网络。
+当bridge网络下不去暴露任何端口，那么基本上等同于VM的Host-only网络。
 
-首先我们去对比下VM和Docker中不同的网络，这样会比较清楚。
+## Bridged
 
-VM	Docker
-NAT	bridge
-Bridged	macvlan, overlay等
-Host-only	bridge
-NAT
+桥接网络带来的好处是，不需要通过NAT的端口映射即可实现容器内服务的暴露，当容器桥接到物理网络时，容器就是物理网络中的一台主机，使得容器间及容器与物理主机间实现互通。   
+上面提到Docker中默认的bridge并不是真正的桥接网络，而Docker的网络是可以灵活自定义的，可以通过多种方式实现真正的桥接。   
+其中可以通过overlay网络驱动实现，多主机多容器的桥接，但需要依赖额外的key-value服务来保存网络拓扑信息。   
+另外一些第三方工具也能够实现桥接模式，如pipework等。   
+桥接网络可以使容器网络部署简单化，因此Docker官方在1.12版本之后引入了macvlan网络驱动，这样我们可以更简单的为容器配置桥接网络。   
 
-VM中的NAT对应Docker中的bridge，虽然叫bridge，但和VM的bridged网络却不一样，其原理是在宿主机上虚出一块网卡bridge0，然后所有容器会桥接在这块网卡的网段上。默认情况下容器能访问外部网络，但外部网络无法访问容器，因此需要通过暴露容器端口的方式（docker run -p）让外部网络访问容器内的服务。此时docker会在宿主机上建立一条NAT路由规则，将子网中容器内的服务通过端口转发（port forwarding）的方式暴露给外部网络。当bridge网络下不去暴露任何端口，那么基本上等同于VM的Host-only网络。
 
-Bridged
 
-桥接网络带来的好处是，不需要通过NAT的端口映射即可实现容器内服务的暴露，当容器桥接到物理网络时，容器就是物理网络中的一台主机，使得容器间及容器与物理主机间实现互通。上面提到Docker中默认的bridge并不是真正的桥接网络，而Docker的网络是可以灵活自定义的，可以通过多种方式实现真正的桥接。其中可以通过overlay网络驱动实现，多主机多容器的桥接，但需要依赖额外的key-value服务来保存网络拓扑信息。另外一些第三方工具也能够实现桥接模式，如pipework等。桥接网络可以使容器网络部署简单化，因此Docker官方在1.12版本之后引入了macvlan网络驱动，这样我们可以更简单的为容器配置桥接网络。
-
-Macvlan
+## Macvlan
 
 顾名思义，macvlan的原理是在宿主机物理网卡上虚拟出多个子网卡，通过不同的MAC地址在数据链路层（Data Link Layer）进行网络数据转发的，它是比较新的网络虚拟化技术，需要较新的内核支持（Linux kernel v3.9–3.19 and 4.0+）。
 
-Using macvlan
+## Using macvlan
 
-## 创建网络
+### 创建网络
 
     docker network create -d macvlan \
         --subnet=192.168.1.0/24 \
@@ -37,7 +37,7 @@ Using macvlan
 4. 设置要在宿主机上那块网卡上建立虚拟子网卡
 
 
-## 测试
+### 测试
 
     docker  run --net=mcv --ip=192.168.1.99 -itd alpine /bin/sh
  运行容器，指定刚建好的macvlan网络，并制定IP地址。  
