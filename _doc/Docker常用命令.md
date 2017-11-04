@@ -68,8 +68,9 @@ docker cp  容器名:容器路径  宿主机路径    拷贝文件到宿主机
 
 docker commit -m='A new image' --author='Aomine' 614122c0aabb aoct/apache2
 
-
-docker build  ./                          执行Dockerfile文件，build后面需要带一个路径                          
+docker build  ./                          执行Dockerfile文件，build后面需要带一个路径 
+docker build -t zengs/nginx:1.12.2 ./
+                         
 
 docker login                              输入用户名密码邮箱来完成注册登录
 

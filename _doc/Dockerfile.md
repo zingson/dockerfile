@@ -1,6 +1,8 @@
 ## Dockerfile
 
-官网各镜像构建: https://github.com/docker-library
+官网各镜像构建: https://github.com/docker-library 
+
+执行：docker build -t zengs/nginx:1.12.2 ./   后面需要带一个路径，当前路径下Dockerfile
 
 
 ## 使用Dockerfile构建镜像与创建容器
