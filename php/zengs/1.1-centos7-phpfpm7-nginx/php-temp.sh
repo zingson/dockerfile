@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 # 临时记录安装命令
 
 docker rm -f zengs-php
