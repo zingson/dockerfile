@@ -13,6 +13,7 @@ WORKDIR /
 RUN echo -e '#!/bin/bash \n'>/docker-entrypoint.sh
 RUN echo -e "\
 service php-fpm restart \n\
+top \n\
 ">>/docker-entrypoint.sh
 RUN chmod u+x /docker-entrypoint.sh
 
