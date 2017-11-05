@@ -57,7 +57,8 @@ RUN chmod u+x /docker-entrypoint.sh
 
 # 数据卷
 VOLUME ["/etc/nginx/","/usr/share/nginx/html/","/var/log/nginx/"]
-VOLUME ["/var/lib/mysql/","/etc/my.cnf","/var/log/mysqld.log"]
+#"/etc/my.cnf"   "/var/log/mysqld.log"
+VOLUME ["/var/lib/mysql/"]
 VOLUME ["/etc/opt/remi/php71/","/var/opt/remi/php71/log/"]
 
 
