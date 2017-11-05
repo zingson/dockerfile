@@ -1,9 +1,14 @@
 #!/bin/bash
 
+# 运行容器
 sudo docker run \
-    --name nginx \
-    -v /apps/nginx/html:/usr/share/nginx/html \
-    -v /apps/nginx/conf/nginx.conf:/etc/nginx/nginx.conf \
-    -v /apps/nginx/conf/conf.d:/etc/nginx/conf.d \
+    --name zengs_nginx \
+    -p 80:80 \
+    -v /apps/zengs/nginx/html:/usr/share/nginx/html \
+    -v /apps/zengs/nginx/conf:/etc/nginx \
+    -v /apps/zengs/nginx/logs:/var/log/nginx \
     --privileged=true \
-    -d nginx:1.12.1
+    -d registry.cn-hangzhou.aliyuncs.com/zengs/nginx
+
+
+
