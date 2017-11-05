@@ -18,5 +18,5 @@ RUN chmod u+x /docker-entrypoint.sh
 EXPOSE 22 80 9000
 
 # 容器启动时执行
-CMD ["/usr/sbin/init && /docker-entrypoint.sh"]
+CMD ["/usr/sbin/init && /bin/bash && /docker-entrypoint.sh"]
 
