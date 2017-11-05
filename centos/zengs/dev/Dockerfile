@@ -48,7 +48,7 @@ WORKDIR /
 # 感叹号用双引号echo输出会出错，启动时需要分配终端，也可通过守护进程启动
 RUN echo -e '#!/bin/bash \n'>/docker-entrypoint.sh
 RUN echo -e "\
-service php-fpm start \n\
+service php71-php-fpm start \n\
 service nginx start \n\
 service mysqld start \n\
 tail -f /tmp/yum.log \n\
