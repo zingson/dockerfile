@@ -2,7 +2,7 @@ FROM centos:latest
 
 MAINTAINER Zengs. <zingsono@gmail.com>
 
-# 安装全部日常使用的服务，用于测试。
+# 安装全部日常使用的服务，用于开发测试。
 
 RUN yum -y install iproute nmap wget php-fpm
 
