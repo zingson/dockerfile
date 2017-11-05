@@ -11,12 +11,12 @@ WORKDIR /
 # 感叹号用双引号echo输出会出错
 RUN echo -e '#!/bin/bash \n'>./docker-entrypoint.sh
 RUN echo -e "\
-systemctl restart php-fpm   \
+systemctl restart php-fpm   \n\
 ">>./docker-entrypoint.sh
 RUN chmod u+x ./docker-entrypoint.sh
 
 EXPOSE 22 80 9000
 
 # 容器启动时执行
-CMD ["/usr/sbin/init && ./docker-entrypoint.sh"]
+CMD ["/usr/sbin/init && /docker-entrypoint.sh"]
 
