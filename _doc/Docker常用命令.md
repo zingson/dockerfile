@@ -95,13 +95,13 @@ Docker Hub
 
 ## 命令收集
 
-- 停止所有正在运行的容器
-  ```
-  docker stop $(docker ps -a -q) 
-  ```
+```
+# 停止所有正在运行的容器
+docker stop $(docker ps -a -q) 
+# 删除所有tag为<none>的镜像
+docker images |grep none|awk '{print $3}'|xargs docker rmi
 
-
-/usr/sbin/init
+```
 
 
 
