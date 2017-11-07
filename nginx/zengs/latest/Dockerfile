@@ -2,14 +2,14 @@ FROM centos:6.9
 
 MAINTAINER Zengs. <zingsono@gmail.com>
 
-# Nginx repo
+# Nginx Centos6 repo
 RUN echo -e "[nginx] \n\
 name=nginx repo \n\
-baseurl=http://nginx.org/packages/centos/7/\$basearch/ \n\
+baseurl=http://nginx.org/packages/centos/6/\$basearch/ \n\
 gpgcheck=0 \n\
 enabled=1 \n\
 ">/etc/yum.repos.d/nginx.repo
-RUN yum install nginx -y
+RUN yum -y install nginx
 
 VOLUME ["/etc/nginx/","/usr/share/nginx/html/","/var/log/nginx/"]
 
