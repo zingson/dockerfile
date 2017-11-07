@@ -17,5 +17,27 @@ Replace “OS” with “rhel” or “centos”, depending on the distribution 
 
 
  
+ ```text
+
+# 备份配置文件目录
+RUN cp -rf /etc/nginx/ /tmp/
+
+
+# 切换目录，相当于cd命令
+WORKDIR /usr/share/nginx
+
+# 感叹号用双引号echo输出会出错
+RUN echo -e '#!/bin/bash \n'>./nginx-entrypoint.sh
+# 1.Nginx配置文件不存在时使用默认配置；2.启动Nginx；
+RUN echo -e "\
+if [ ! -f '/etc/nginx/nginx.conf' ]; then \n\
+    cp -r /tmp/nginx/ /etc/ \n\
+fi  \n\
+systemctl restart nginx  \n\
+systemctl restart php-fpm  \n\
+">>.//nginx-entrypoint.sh
+RUN chmod u+x ./nginx-entrypoint.sh
+
+```
 
 
