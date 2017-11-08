@@ -11,7 +11,8 @@ enabled=1 \n\
 ">/etc/yum.repos.d/nginx.repo
 RUN yum -y install nginx
 
-VOLUME ["/etc/nginx/","/usr/share/nginx/html/","/var/log/nginx/"]
+#"/etc/nginx/","/var/log/nginx/"
+VOLUME ["/usr/share/nginx/html/"]
 
 # 如果存在/usr/share/nginx/html/conf目录，则覆盖/etc/nginx目录中文件来使用自定义配置
 

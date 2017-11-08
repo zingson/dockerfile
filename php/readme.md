@@ -26,3 +26,6 @@ enabled=1
 gpgcheck=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi
 ```
+
+
+## PHP项目部署说明
