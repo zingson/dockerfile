@@ -41,3 +41,4 @@ RUN chmod u+x ./nginx-entrypoint.sh
 ```
 
 
+--restart=always

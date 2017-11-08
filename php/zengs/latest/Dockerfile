@@ -3,19 +3,6 @@ FROM centos:6.9
 MAINTAINER Zengs. <zingsono@gmail.com>
 
 #OK******************************************************
-### nginx
-RUN echo -e "[nginx] \n\
-name=nginx repo \n\
-baseurl=http://nginx.org/packages/centos/6/\$basearch/ \n\
-gpgcheck=0 \n\
-enabled=1 \n\
-">/etc/yum.repos.d/nginx.repo
-RUN yum -y install nginx
-
-VOLUME ["/etc/nginx/","/usr/share/nginx/html/","/var/log/nginx/"]
-
-
-#OK******************************************************
 # php-fpm remi
 RUN echo -e "[php-remi] \n\
 name=Remi's RPM repository for Enterprise Linux 6 \n\
@@ -25,7 +12,7 @@ gpgcheck=0 \n\
 #gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi \n\
 ">/etc/yum.repos.d/php-remi.repo
 #  php71 版本号，服务器名相同
-RUN yum -y install php71 php71-php-fpm
+RUN yum -y install php71-php-fpm
 
 VOLUME ["/etc/opt/remi/php71/","/var/opt/remi/php71/log/"]
 
@@ -35,7 +22,6 @@ WORKDIR /
 RUN echo -e '#!/bin/bash \n'>/docker-entrypoint.sh \
 && echo -e "\
 service php71-php-fpm start \n\
-service nginx start \n\
 tail -f /tmp/yum.log \n\
 ">>/docker-entrypoint.sh  \
 && chmod u+x /docker-entrypoint.sh

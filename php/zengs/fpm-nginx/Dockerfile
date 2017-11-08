@@ -1,66 +1,49 @@
-FROM registry.cn-hangzhou.aliyuncs.com/zengs/nginx:latest
+FROM centos:6.9
 
 MAINTAINER Zengs. <zingsono@gmail.com>
 
 
-# 使用yum安装php-fpm
-RUN yum install php-fpm -y
-
-###############################################
-### Nginx build
-
-# 设置nginx官方yum源
+# Nginx Centos6 repo
 RUN echo -e "[nginx] \n\
 name=nginx repo \n\
-baseurl=http://nginx.org/packages/centos/7/\$basearch/ \n\
+baseurl=http://nginx.org/packages/centos/6/\$basearch/ \n\
 gpgcheck=0 \n\
 enabled=1 \n\
 ">/etc/yum.repos.d/nginx.repo
+RUN yum -y install nginx
 
-# 使用yum安装nginx
-RUN yum install nginx -y
+#"/etc/nginx/","/var/log/nginx/"
+VOLUME ["/usr/share/nginx/html/"]
 
-# 备份配置文件目录
-RUN cp -rf /etc/nginx/ /tmp/
+# 启动时检查如果存在/usr/share/nginx/html/conf目录，则覆盖/etc/nginx目录中文件来使用自定义配置
 
-# 挂载点,用于持久化数据需求，否则重启数据都丢失
-#VOLUME ["/tmp/data"]
 
-# 切换目录，相当于cd命令
-WORKDIR /usr/share/nginx
-
-# 感叹号用双引号echo输出会出错
-RUN echo -e '#!/bin/bash \n'>./nginx-entrypoint.sh
-# 1.Nginx配置文件不存在时使用默认配置；2.启动Nginx；
-RUN echo -e "\
-if [ ! -f '/etc/nginx/nginx.conf' ]; then \n\
-    cp -r /tmp/nginx/ /etc/ \n\
-fi  \n\
-nginx -g 'daemon off;'  \n\
-">>.//nginx-entrypoint.sh
-RUN chmod u+x ./nginx-entrypoint.sh
-
-# 映射到主机的端口
-EXPOSE 80
-
-# 容器启动时执行
-CMD [ "./nginx-entrypoint.sh"]
-
-### 数据目录
-# /usr/share/nginx/html
-# /etc/nginx
-# /var/log/nginx
-
+# php71-php-fpm remi
+RUN echo -e "[php-remi] \n\
+name=Remi's RPM repository for Enterprise Linux 6 \n\
+baseurl=http://rpms.remirepo.net/enterprise/6/remi/\$basearch/ \n\
+enabled=1 \n\
+gpgcheck=0 \n\
+#gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi \n\
+">/etc/yum.repos.d/php-remi.repo
+#  php71 版本号，服务名相同
+RUN yum -y install php71-php-fpm
 
 
 # 映射到主机的端口
 EXPOSE 80
 
-# 容器启动时执行
-CMD ["php-fpm"]
+RUN echo -e '#!/bin/bash \n'>/docker-entrypoint.sh \
+&& echo -e "\
+#service php71-php-fpm start \n\
+service nginx start \n\
+">>/docker-entrypoint.sh  \
+#&& echo "">/tmp/t
+#&& echo -e "tail -f /tmp/t \n">>/docker-entrypoint.sh \
+&& chmod u+x /docker-entrypoint.sh
 
-### 数据目录
-## nginx
-# /usr/share/nginx/html
-# /etc/nginx
-# /var/log/nginx
+
+EXPOSE 80
+
+# 容器启动时执行
+CMD ["/docker-entrypoint.sh && php71-php-fpm"]
