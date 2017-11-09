@@ -1,6 +1,41 @@
-## docker-nginx
+# docker-nginx
 
 官网：[http://nginx.org](http://nginx.org)  
+
+## Nginx镜像使用说明
+
+### [stable nginx:1.12.2]
+
+```bash
+sudo docker run \
+    --name nginx \
+    -p 80:80 \
+    -v /apps/nginx/html:/usr/share/nginx/html \
+    -v /apps/nginx/conf/nginx.conf:/etc/nginx/nginx.conf \
+    -v /apps/nginx/conf/conf.d:/etc/nginx/conf.d \
+    --privileged=true \
+    -d nginx:1.12.1-alpine \
+```
+
+
+### [stable nginx:1.12.2-alpine]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------------------------------------
 
 CentOS7 源配置：
 
