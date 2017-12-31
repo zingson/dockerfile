@@ -3,8 +3,9 @@ FROM centos:6.9
 MAINTAINER Zengs. <zingsono@gmail.com>
 
 RUN export VER=mongodb-linux-x86_64-3.6.1 \
-    && yum -y install curl tar \
-    && cd /  && curl -O https://fastdl.mongodb.org/linux/$VER.tgz \
+    && yum -y install wget tar \
+    && cd /
+    && wget https://fastdl.mongodb.org/linux/$VER.tgz \
     && tar -zxvf $VER.tgz \
     && cp -n /$VER/bin/* /usr/local/bin/ \
     && rm -rf /$VER/  \
