@@ -2,8 +2,7 @@ FROM centos:6.9
 
 MAINTAINER Zengs. <zingsono@gmail.com>
 
-# RUN yum -y install iproute nmap wget tar unzip
-
+RUN yum -y install curl tar
 
 RUN export _V=mongodb-linux-x86_64-3.6.1
 RUN cd /  && curl -O https://fastdl.mongodb.org/linux/$_V \
