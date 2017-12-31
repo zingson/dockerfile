@@ -2,10 +2,10 @@ FROM centos:6.9
 
 MAINTAINER Zengs. <zingsono@gmail.com>
 
-RUN yum -y install curl tar
+RUN yum -y install wget tar
 
 RUN export _V=mongodb-linux-x86_64-3.6.1 \
-    && cd /  && curl -O https://fastdl.mongodb.org/linux/$_V \
+    && cd /  && wget https://fastdl.mongodb.org/linux/$_V \
     && tar -zxvf $_V.tgz \
     && cp -n /$_V/bin/* /usr/local/bin/ \
     && rm -rf /$_V/  \
