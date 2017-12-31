@@ -9,9 +9,9 @@ RUN export VER = mongodb-linux-x86_64-3.6.1 \
     && cp -n /$VER/bin/* /usr/local/bin/ \
     && rm -rf /$VER/  \
     && rm -f /$VER.tgz \
-    && yum -y remove curl tar wgt \
     && echo ''>>/etc/mongodb.conf
 
+# 启动容器时需要挂在的目录与文件
 # 数据目录 /dada/mongodb/db
 # 日志目录 /dada/mongodb/logs
 # 配置文件 /dada/mongodb/mongodb.conf
