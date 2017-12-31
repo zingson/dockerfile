@@ -4,7 +4,7 @@ MAINTAINER Zengs. <zingsono@gmail.com>
 
 RUN export VER=mongodb-linux-x86_64-3.6.1 \
     && yum -y install wget tar \
-    && cd /
+    && cd / \
     && wget https://fastdl.mongodb.org/linux/$VER.tgz \
     && tar -zxvf $VER.tgz \
     && cp -n /$VER/bin/* /usr/local/bin/ \
