@@ -15,8 +15,6 @@ RUN export _V=mongodb-linux-x86_64-3.6.1 \
 # 数据目录 /dada/mongodb/db
 # 日志目录 /dada/mongodb/logs
 # 配置文件 /dada/mongodb/mongodb.conf
-VOLUME /data/mongodb/
-VOLUME /etc/mongodb.conf
 
 EXPOSE 27017 28017
 
