@@ -2,14 +2,14 @@ FROM centos:6.9
 
 MAINTAINER Zengs. <zingsono@gmail.com>
 
-RUN yum -y install curl tar
-
-RUN export _V=mongodb-linux-x86_64-3.6.1 \
-    && cd /  && curl -O https://fastdl.mongodb.org/linux/$_V.tgz \
-    && tar -zxvf $_V.tgz \
-    && cp -n /$_V/bin/* /usr/local/bin/ \
-    && rm -rf /$_V/  \
-    && rm -f /$_V.tgz \
+RUN export VER = mongodb-linux-x86_64-3.6.1 \
+    && yum -y install curl tar \
+    && cd /  && curl -O https://fastdl.mongodb.org/linux/$VER.tgz \
+    && tar -zxvf $VER.tgz \
+    && cp -n /$VER/bin/* /usr/local/bin/ \
+    && rm -rf /$VER/  \
+    && rm -f /$VER.tgz \
+    && yum -y remove curl tar wgt \
     && echo ''>>/etc/mongodb.conf
 
 # 数据目录 /dada/mongodb/db
