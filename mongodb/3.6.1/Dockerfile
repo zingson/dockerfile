@@ -2,10 +2,14 @@ FROM centos:6.9
 
 MAINTAINER Zengs. <zingsono@gmail.com>
 
+# 测试中
+# http://download.s.zingson.com/download/mongodb-linux-x86_64-3.6.1.tgz
+# https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.6.1.tgz
+
 RUN export VER=mongodb-linux-x86_64-3.6.1 \
     && yum -y install wget tar \
     && cd / \
-    && wget https://fastdl.mongodb.org/linux/$VER.tgz \
+    && wget http://download.s.zingson.com/download/$VER.tgz \
     && tar -zxvf $VER.tgz \
     && cp -n /$VER/bin/* /usr/local/bin/ \
     && rm -rf /$VER/  \
