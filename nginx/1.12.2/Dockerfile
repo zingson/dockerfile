@@ -8,7 +8,7 @@ MAINTAINER Zengs. <zingsono@gmail.com>
 # 编译环境
 RUN yum install -y gcc gcc-c++ wget tar
 
-# nginx依赖 libxml2 libxslt
+# nginx依赖
 RUN yum install -y pcre pcre-devel openssl openssl-devel zlib zlib-devel
 
 # 创建用户nginx，以该用户的身份执行nginx
@@ -21,12 +21,13 @@ RUN cd / \
 
 ## 编译安装
 
-# 生成Makefile文件，删除了部分不常用模块
+# 生成Makefile文件，自定义添加需要的模块进行编译
 RUN cd nginx-1.12.2 \
      && CONFIG="\
      		--prefix=/apps/nginx \
      		--user=nginx \
      		--group=nginx \
+     		--with-http_v2_module \
      		--with-http_ssl_module \
      		--with-http_realip_module \
      		--with-http_addition_module \
@@ -48,7 +49,6 @@ RUN cd nginx-1.12.2 \
      		--with-http_slice_module \
      		--with-compat \
      		--with-file-aio \
-     		--with-http_v2_module \
      	" \
      && ./configure $CONFIG --with-debug \
 
@@ -58,6 +58,7 @@ RUN make && make install
 
 
 ## 修改conf文件
+
 
 EXPOSE 80
 

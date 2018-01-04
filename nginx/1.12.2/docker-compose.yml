@@ -1,0 +1,8 @@
+version:'2'
+  services:
+    nginx:
+      images: "zengs/nginx:1.12.2"
+      ports:
+        - "80:80"
+      volumes:
+        - "/Information/Docker/data/nginx/html/:/apps/nginx/html/"
