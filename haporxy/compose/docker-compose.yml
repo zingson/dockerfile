@@ -1,7 +1,9 @@
 # YML构建Nginx容器
+
 version: '2'
 services:
   nginx:
+    container_name: "nginx"
     image: "nginx:1.12.2"
     ports:
       - "80:80"

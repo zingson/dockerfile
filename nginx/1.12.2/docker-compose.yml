@@ -1,9 +1,20 @@
-version:'2'
+# docker-compose 基于hub.docker镜像构建nginx容器
+# https://hub.docker.com/_/nginx/
+# https://github.com/nginxinc/docker-nginx/blob/72ac2226580ee73c170163dbe6e4436373b6ece9/stable/stretch/Dockerfile
+
+version: '2'
 services:
   nginx:
-    images: "zengs/nginx:1.12.2"
-    links: "nginx1.12.2"
+    container_name: "nginx"
+    image: "nginx:1.12.2"
     ports:
       - "80:80"
     volumes:
-      - "/Information/Docker/data/nginx/html/:/apps/nginx/html/"
+      - C:\Information\Docker\data\nginx\conf\conf.d:/etc/nginx/conf.d
+      - C:\Information\Docker\data\nginx\logs:/var/log/nginx
+      - C:\Information\Docker\data\nginx\html:/usr/share/nginx/html
+
+
+
+
+

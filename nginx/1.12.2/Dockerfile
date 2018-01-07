@@ -2,7 +2,7 @@ FROM centos:6.9
 
 MAINTAINER Zengs. <zingsono@gmail.com>
 
-# 测试中
+# 测试中- 未正式发布
 
 
 # 编译环境

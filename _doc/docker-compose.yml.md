@@ -7,6 +7,7 @@
 image指定为镜像名称或镜像 ID。如果镜像在本地不存在，Compose 将会尝试拉去这个镜像。
 ```
 
+- container_name 自定义容器名称
 - build  指定 Dockerfile 所在文件夹的路径。 Compose 将会利用它自动构建这个镜像，然后使用这个镜像。如：build: /path/to/build/dir
 - command 覆盖容器启动后默认执行的命令。
 - links  链接到其它服务中的容器。使用服务名称（同时作为别名）或服务名称
