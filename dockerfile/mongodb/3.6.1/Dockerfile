@@ -2,22 +2,24 @@ FROM centos:6.9
 
 MAINTAINER Zengs. <zingsono@gmail.com>
 
-# RUN yum -y install iproute nmap wget tar unzip
+# 测试中
+# http://download.s.zingson.com/download/mongodb-linux-x86_64-3.6.1.tgz
+# https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.6.1.tgz
 
-
-RUN export _V=mongodb-linux-x86_64-3.6.1
-RUN cd /  && curl -O https://fastdl.mongodb.org/linux/$_V \
-    && tar -zxvf $_V.tgz \
-    && cp -n /$_V/bin/* /usr/local/bin/ \
-    && rm -rf /$_V/  \
-    && rm -f /$_V.tgz \
+RUN export VER=mongodb-linux-x86_64-3.6.1 \
+    && yum -y install wget tar \
+    && cd / \
+    && wget http://download.s.zingson.com/download/$VER.tgz \
+    && tar -zxvf $VER.tgz \
+    && cp -n /$VER/bin/* /usr/local/bin/ \
+    && rm -rf /$VER/  \
+    && rm -f /$VER.tgz \
     && echo ''>>/etc/mongodb.conf
 
+# 启动容器时需要挂在的目录与文件
 # 数据目录 /dada/mongodb/db
 # 日志目录 /dada/mongodb/logs
 # 配置文件 /dada/mongodb/mongodb.conf
-VOLUME /data/mongodb/
-VOLUME /etc/mongodb.conf
 
 EXPOSE 27017 28017
 
