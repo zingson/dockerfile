@@ -102,7 +102,7 @@ spec:
       containers:
       - name: kubernetes-dashboard
         # 确保镜像能访问到 k8s.gcr.io/kubernetes-dashboard-amd64:v1.8.3
-        image: registry.cn-hangzhou.aliyuncs.com/google-containers/kubernetes-dashboard-amd64:v1.8.3
+        image: registry.cn-hangzhou.aliyuncs.com/zengs/kubernetes-dashboard:v1.8.3
         ports:
         - containerPort: 8443
           protocol: TCP
