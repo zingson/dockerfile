@@ -1,12 +1,45 @@
-
-
 ## CentOS7 
 
-```bash
-# 关闭防火墙
-systemctl disable firewalld
-systemctl stop firewalld
-```
+    关机：systemctl  halt,  systemctl poweroff
+    重启：systemctl  reboot
+    挂起：systemctl  suspend
+    快照：systemctl  hibernate
+    快照并挂起：systemctl  hybrid-sleep
+
+## Master安装步骤
+1. 禁用SELINUX   
+/etc/selinux/config 修改 SELINUX=disabled ,重启生效， 查看状态/usr/sbin/sestatus -v ，如果SELinux status参数为enabled即为开启状态   
+2. 关闭防火墙    
+   >systemctl stop firewalld    
+    systemctl disable firewalld     
+3. 安装docker etcd flanneld    
+   >yum install -y docker etcd flannel  
+   systemctl enable docker   
+   systemctl enable etcd      
+   systemctl enable flanneld  
+4. 修改配置etcd    
+    设置 etcdctl mk /atomic.io/network/config '{"Network": "172.17.0.0/16"}'  ,IP必须为docker的网段      
+   >修改etcd配置vi /etc/etcd/etcd.conf    
+    ETCD_LISTEN_CLIENT_URLS="http://0.0.0.0:2379"  
+    重启 systemctl restart etcd       
+5. 修改flanneld配置
+    >修改flanneld配置vi /etc/sysconfig/flanneld    
+    FLANNEL_ETCD_ENDPOINTS="http://k8s-master:2379"    
+    重启 systemctl restart flanneld    
+6. 检查Docker网络配置,确保docker0在flannel0网段中。
+    >systemctl restart docker  
+    ip route    
+    default via 192.168.3.1 dev enp0s3 proto static metric 100   
+    172.17.0.0/16 dev flannel0 proto kernel scope link src 172.17.19.0   
+    172.17.19.0/24 dev docker0 proto kernel scope link src 172.17.19.1   
+    192.168.3.0/24 dev enp0s3 proto kernel scope link src 192.168.3.64 metric 100   
+    
+    确保网络没问题，可进行后续的kubernetes安装。
+7. Kubenetes-master节点需要安装服务：apiserver  
+
+  
+## Node安装步骤
+
 
 Master节点安装部署：etcd/kube-apiserver/kube-controller-manager/kube-scheduler
 使用kubectl作为客户端与master进行交互操作。
