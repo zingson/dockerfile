@@ -1,15 +1,27 @@
-#!/usr/bin/env bash
+#!/bin/bash
+# 脚本输出记入日志文件
+# ./install-kubernetes-master-v1.10.sh >>install-k8s-master.log 2>&1
+
 
 # install Kubernetes-master
+echo "*******************************************************************************"
+echo "*** kubernetes-master"
 
-ETCD_HOST = 192.169.56.111
-API_SERVER_HOST =
+etcd_server="192.168.56.101:2379"
+
 
 
 ####### 1. docker
-yum install -y docker
+if [ `rpm -qa | grep docker |wc -l` -ne 0 ];then
+    echo -e "yes"
+else
+    echo "no"
+    yum install -y docker
+fi
+
 
 # 设置国内镜像仓库
+
 
 ####### 2. etcd
 yum install -y etcd
