@@ -1,0 +1,2 @@
+
+KUBE_API_ARGS="--etcd_servers=http://192.168.56.101:2379"
