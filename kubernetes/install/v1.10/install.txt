@@ -1,0 +1,36 @@
+
+
+install-k8s-master.sh  安装k8s master 节点
+
+
+
+
+
+echo "*************************************************************************************************"
+echo "* kube-scheduler.service ...... "
+cat >/usr/lib/systemd/system/kube-scheduler.service <<EOF
+[Unit]
+Description=Kubernetes Scheduler
+Documentation=https://github.com/kubernetes/kubernetes
+After=kube-apiserver.service
+
+[Service]
+EnvironmentFile=-/etc/kubenetes/master-config
+ExecStart=/usr/local/bin/kube-scheduler \$KUBE_SCHEDULER_ARGS
+Restart=on-failure
+Type=notify
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target
+EOF
+echo "* cat /usr/lib/systemd/system/kube-scheduler.service"
+cat /usr/lib/systemd/system/kube-scheduler.service
+echo "* systemctl daemon-reload"
+systemctl daemon-reload
+systemctl restart kube-scheduler.service
+echo "* systemctl status kube-scheduler.service"
+systemctl status kube-scheduler.service
+echo "* "
+echo "* "
+
