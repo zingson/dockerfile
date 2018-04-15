@@ -1,4 +1,7 @@
 
+http://thoreauz.com/2017/03/18/docker/Centos7%E6%90%AD%E5%BB%BAkubernetes%E6%90%AD%E5%BB%BA/
+http://cbs.centos.org/repos/virt7-kubernetes-19-release/x86_64/os/
+
 
 install-k8s-master.sh  安装k8s master 节点
 
