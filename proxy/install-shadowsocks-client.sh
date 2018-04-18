@@ -1,9 +1,10 @@
 #!/bin/bash
 
 # CentOS7 安装 shadowsocks 客户端
+
+# 安装依赖
 sudo yum -y install epel-release
 sudo yum -y install python-pip
-
 sudo pip install shadowsocks
 
 # 配置文件
@@ -28,7 +29,6 @@ sudo cat >/usr/lib/systemd/system/shadowsocks.service <<EOF
 Description=Shadowsocks
 
 [Service]
-TimeoutStartSec=0
 ExecStart=/usr/bin/sslocal -c /etc/shadowsocks/shadowsocks.json
 Restart=on-failure
 Type=notify
@@ -39,9 +39,9 @@ EOF
 
 # 启动服务
 sudo systemctl enable shadowsocks.service
+sudo systemctl stop shadowsocks.service
 sudo systemctl start shadowsocks.service
 sudo systemctl status shadowsocks.service
-
 
 # 验证服务，正常会显示代理服务IP地址
 curl --socks5 127.0.0.1:1080 http://httpbin.org/ip
