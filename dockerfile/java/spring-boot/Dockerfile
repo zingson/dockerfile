@@ -19,19 +19,13 @@ RUN curl https://downloads.gradle.org/distributions/gradle-4.7-bin.zip -O \
     && echo 'export PATH="$PATH:/opt/gradle-4.7/bin:/opt/node-v8.11.1/bin"'>>/etc/profile \
     && source /etc/profile
 
-# 编译脚本
-
-
-# 部署脚本
-
-
-# 操作服务
-
+COPY ./bootstrap.sh /opt/projects/
+COPY ./hook-server.js /opt/projects/
 
 # 对外http端口，用于触发自动编译脚本
 EXPOSE 39001
 
-ENTRYPOINT ["node /opt/projects/bootstrap.js"]
+ENTRYPOINT node /opt/projects/hook-server.js
 
 
 
