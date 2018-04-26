@@ -1,6 +1,8 @@
 FROM centos:7
 
-# 构建自动编译部署项目镜像, Jdk8 Git Gradle Node
+# 构建自动编译部署项目镜像, Jdk8 Git Gradle Node Nginx
+
+# 编译项目、复制Dockerfile jar
 
 MAINTAINER Zengs. <zingsono@gmail.com>
 

@@ -6,15 +6,18 @@
 console.log(`*******************************************`);
 const http = require('http');
 const { exec } = require('child_process');
+
 const server = http.createServer((req, res) => {
-    let cmd = `sh /opt/bootstrap.sh`;
+    let cmd = `ping baidu.com`;//`./bootstrap.sh`;
+    console.log(`CMD: ${cmd}`);
     exec(cmd, (error, stdout, stderr) => {
         if (error) {
-            console.log(`stderr: ${stderr}`);
+            console.error(`exec error: ${error}`);
             res.end(error.message);
             return;
         }
         console.log(`stdout: ${stdout}`);
+        console.log(`stderr: ${stderr}`);
         res.end(stdout);
     });
 });
