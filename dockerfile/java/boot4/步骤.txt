@@ -1,0 +1,59 @@
+
+构建Centos7镜像
+
+运行容器
+docker run --name dev -v /opt:/opt -v /var/run/docker.sock:/var/run/docker.sock -p 39001:39001 -itd centos:7
+
+1. 创建Java编译打包环境
+RUN yum install -y unzip git  java-1.8.0-openjdk-*
+RUN cd / && curl https://downloads.gradle.org/distributions/gradle-4.7-bin.zip -O \
+    && unzip /gradle-4.7-bin.zip \
+    && rm -f /gradle-4.7-bin.zip \
+    && mv -f /gradle-4.7 /opt/gradle-4.7 \
+    && curl https://nodejs.org/dist/v8.11.1/node-v8.11.1-linux-x64.tar.xz -O \
+    && tar -xvf /node-v8.11.1-linux-x64.tar.xz \
+    && rm -f /node-v8.11.1-linux-x64.tar.xz \
+    && mv -f /node-v8.11.1-linux-x64 /opt/node-v8.11.1 \
+    && echo 'export PATH="$PATH:/opt/gradle-4.7/bin:/opt/node-v8.11.1/bin"'>>/etc/profile \
+    && echo 'export JAVA_HOME="/usr"'>>/etc/profile \
+    && source /etc/profile
+
+2. 拉取GIT源码编译打包
+# GIT 项目地址
+GIT_URL=https://zingson:zx142857@gitee.com/zengs-cloud/cloud-eureka.git
+GIT_BRANCH=master
+
+PRO_NAME=${GIT_URL##*/}
+PRO_NAME=${PRO_NAME%.*}
+WORKDIR=/opt/projects/
+mkdir -p $WORKDIR
+
+# 从git获取代码
+if [ ! -d "$WORKDIR$PRO_NAME" ]
+then
+  cd $WORKDIR
+  git clone -b $GIT_BRANCH $GIT_URL
+else
+ cd $WORKDIR$PRO_NAME
+ git pull origin $GIT_BRANCH:$GIT_BRANCH
+fi
+
+# 使用Gradle编译打包
+cd $WORKDIR$PRO_NAME
+gradle clean
+gradle build
+gradle bootJar
+
+
+3. 构建Dockerfile，复制编译后的Jar包和Dockerfile存档到tar包
+cp /build/libs/*.jar
+cat >/opt/build/images/Dockerfile <<EOF
+
+EOF
+
+4. 使用 API 创建镜像
+curl
+
+5. 使用 API 推送镜像到镜像仓库
+
+6. 使用 API 启动服务
