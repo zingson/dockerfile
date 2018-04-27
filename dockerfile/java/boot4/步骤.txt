@@ -57,3 +57,13 @@ curl
 5. 使用 API 推送镜像到镜像仓库
 
 6. 使用 API 启动服务
+
+
+
+
+echo 0
+if [ ! $? -eq 0 ]
+then
+    echo "then------------"
+fi
+echo "success"
