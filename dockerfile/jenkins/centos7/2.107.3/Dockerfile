@@ -11,7 +11,7 @@ ENV JENKINS_PATH=/var/jenkins_home/war/webapps/ROOT/
 ENV JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk
 
 WORKDIR /var/jenkins_home/
-RUN yum install -y wget unzip java-1.8.0-openjdk* \
+RUN yum install -y wget unzip java-1.8.0-openjdk* git \
     &&wget http://mirror.bit.edu.cn/apache/tomcat/tomcat-8/v$TMV/bin/apache-tomcat-$TMV.zip \
     &&wget http://mirrors.jenkins.io/war-stable/$JKV/jenkins.war  \
     &&unzip apache-tomcat-$TMV.zip&&mv apache-tomcat-$TMV war  \
