@@ -25,6 +25,8 @@ mkdir ROOT&&cp jenkins.war ROOT&&cd ROOT&&jar -xvf jenkins.war&&rm -f jenkins.wa
 mv ROOT war/webapps/
 rm -f jenkins.war apache-tomcat-$TMV.zip
 
+chmod +x war/bin/*.sh
+
 echo " ^_^ ^_^ "
 
 
