@@ -3,7 +3,7 @@
 JKV=2.107.3
 TMV=8.5.31
 
-yum install -y wget unzip java-1.8.0-openjdk*
+yum install -y curl unzip java-1.8.0-openjdk*
 
 JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk
 cat >>/etc/profile <<EOF
@@ -16,8 +16,8 @@ export JENKINS_HOME JENKINS_PATH JAVA_HOME  CLASSPATH  PATH
 EOF
 source /etc/profile
 
-wget http://mirror.bit.edu.cn/apache/tomcat/tomcat-8/v$TMV/bin/apache-tomcat-$TMV.zip
-wget http://mirrors.jenkins.io/war-stable/$JKV/jenkins.war
+curl -O http://mirror.bit.edu.cn/apache/tomcat/tomcat-8/v$TMV/bin/apache-tomcat-$TMV.zip
+curl -O http://mirrors.jenkins.io/war-stable/$JKV/jenkins.war
 unzip apache-tomcat-$TMV.zip&&mv apache-tomcat-$TMV war
 rm -rf  war/webapps/ROOT
 mkdir ROOT&&cp jenkins.war ROOT&&cd ROOT&&jar -xvf jenkins.war&&rm -f jenkins.war&&cd ..

@@ -9,4 +9,4 @@ VOLUME /var/jenkins_home
 
 EXPOSE 8080
 
-CMD ./war/bin/catalina.sh run
+CMD ["/var/jenkins_home/war/bin/catalina.sh","run"]
