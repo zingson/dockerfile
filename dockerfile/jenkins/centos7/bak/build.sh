@@ -6,7 +6,6 @@ TMV=8.5.31
 
 yum install -y wget unzip java-1.8.0-openjdk*
 
-JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk
 cat >>/etc/profile <<EOF
 JAVA_HOME=$JAVA_HOME
 PATH=$PATH:$JAVA_HOME/bin
