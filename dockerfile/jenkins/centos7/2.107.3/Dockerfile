@@ -17,9 +17,8 @@ RUN yum install -y wget unzip java-1.8.0-openjdk* \
     &&unzip apache-tomcat-$TMV.zip&&mv apache-tomcat-$TMV war  \
     &&rm -f war/bin/*.bat&&rm -rf  war/webapps/&&mkdir -p war/webapps/ROOT  \
     &&mv jenkins.war war/webapps/ROOT&&cd war/webapps/ROOT/&&jar -xvf jenkins.war&&rm -f jenkins.war&&cd ../../../ \
-    &&rm -f apache-tomcat-$TMV.zip \
-    &&chmod +x war/bin/*.sh
-
+    &&rm -f apache-tomcat-$TMV.zip
+RUN chmod +x war/bin/*.sh
 
 VOLUME /var/jenkins_home
 
