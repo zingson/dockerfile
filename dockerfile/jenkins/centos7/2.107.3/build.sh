@@ -1,4 +1,5 @@
 #!/bin/bash
+# centos7  jenkins.2.107.3  tomcat.8.5.31
 
 JKV=2.107.3
 TMV=8.5.31
