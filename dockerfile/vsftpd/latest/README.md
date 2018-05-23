@@ -1,10 +1,6 @@
-# fauria/vsftpd
+# zingsono/vsftpd
 
-![docker_logo](https://raw.githubusercontent.com/fauria/docker-vsftpd/master/docker_139x115.png)![docker_fauria_logo](https://raw.githubusercontent.com/fauria/docker-vsftpd/master/docker_fauria_161x115.png)
-
-[![Docker Pulls](https://img.shields.io/docker/pulls/fauria/vsftpd.svg?style=plastic)](https://hub.docker.com/r/fauria/vsftpd/)
-[![Docker Build Status](https://img.shields.io/docker/build/fauria/vsftpd.svg?style=plastic)](https://hub.docker.com/r/fauria/vsftpd/builds/)
-[![](https://images.microbadger.com/badges/image/fauria/vsftpd.svg)](https://microbadger.com/images/fauria/vsftpd "fauria/vsftpd")
+参考项目：https://hub.docker.com/r/fauria/vsftpd/
 
 This Docker container implements a vsftpd server, with the following features:
 
@@ -14,12 +10,13 @@ This Docker container implements a vsftpd server, with the following features:
  * Passive mode
  * Logging to a file or STDOUT.
 
-### Installation from [Docker registry hub](https://registry.hub.docker.com/u/fauria/vsftpd/).
 
-You can download the image with the following command:
+### Installation from [Docker registry hub](https://hub.docker.com/r/zingsono/vsftpd/).
+
+获取镜像:
 
 ```bash
-docker pull fauria/vsftpd
+docker pull zingsono/vsftpd
 ```
 
 Environment variables
@@ -82,13 +79,13 @@ Use cases
 1) Create a temporary container for testing purposes:
 
 ```bash
-  docker run --rm fauria/vsftpd
+  docker run --rm zingsono/vsftpd
 ```
 
 2) Create a container in active mode using the default user account, with a binded data directory:
 
 ```bash
-docker run -d -p 21:21 -v /my/data/directory:/home/vsftpd --name vsftpd fauria/vsftpd
+docker run -d -p 21:21 -v /my/data/directory:/home/vsftpd --name vsftpd zingsono/vsftpd
 # see logs for credentials:
 docker logs vsftpd
 ```
@@ -100,7 +97,7 @@ docker run -d -v /my/data/directory:/home/vsftpd \
 -p 20:20 -p 21:21 -p 21100-21110:21100-21110 \
 -e FTP_USER=myuser -e FTP_PASS=mypass \
 -e PASV_ADDRESS=127.0.0.1 -e PASV_MIN_PORT=21100 -e PASV_MAX_PORT=21110 \
---name vsftpd --restart=always fauria/vsftpd
+--name vsftpd --restart=always zingsono/vsftpd
 ```
 
 4) Manually add a new FTP user to an existing container:
@@ -111,4 +108,14 @@ echo -e "myuser\nmypass" >> /etc/vsftpd/virtual_users.txt
 /usr/bin/db_load -T -t hash -f /etc/vsftpd/virtual_users.txt /etc/vsftpd/virtual_users.db
 exit
 docker restart vsftpd
+```
+5) 创建容器
+```bash
+docker volume create vsftpd
+docker run --name vsftpd.1  \ 
+    -v vsftpd:/home/vsftpd \
+    --network cluster --ip 10.18.254.254 \
+    -e FTP_USER=appadmin -e FTP_PASS=appadmin \
+    --restart=always \
+    -d  zingsono/vsftpd:latest
 ```
