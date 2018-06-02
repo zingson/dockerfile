@@ -1,5 +1,9 @@
 # zingsono 
 
-构建基于centos的镜像
+对应hub.docker账号：zingsono  
+
+
+
+
 
 
