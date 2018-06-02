@@ -1,4 +1,5 @@
 FROM zingsono/centos:7
+MAINTAINER Zengs.<zingsono@gmail.com>
 # JRE 1.8.0
 
 # OpenJDK Runtime Environment (build 1.8.0_171-b10)

@@ -1,4 +1,5 @@
 FROM zingsono/centos:7
+MAINTAINER Zengs.<zingsono@gmail.com>
 
 # JDK 1.8.0
 

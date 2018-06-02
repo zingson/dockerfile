@@ -1,4 +1,5 @@
 FROM openjdk:8-jre-alpine
+MAINTAINER Zengs.<zingsono@gmail.com>
 
 # 设置 Alpine 系统时区为中国时间
 
