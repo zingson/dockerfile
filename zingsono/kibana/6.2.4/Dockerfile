@@ -9,7 +9,7 @@ ENV PATH=$PATH:/kibana/bin/
 
 # 配置文件: /kibana/config/kibana.yml
 
-VOLUME /kibana/config
+VOLUME /kibana/
 
 EXPOSE 5601
 CMD ["kibana"]
