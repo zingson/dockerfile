@@ -1,0 +1,35 @@
+#
+# Dockerfile for pptpd
+#
+
+FROM alpine:3.7
+MAINTAINER Zengs <zingsono@gmail.com>
+
+RUN apk add --no-cache iptables ppp pptpd
+
+COPY ./data/pptpd.conf    /etc/
+COPY ./data/chap-secrets  /etc/ppp/
+COPY ./data/pptpd-options /etc/ppp/
+
+EXPOSE 39625
+
+CMD set -xe \
+    && iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE \
+    && pptpd \
+    && syslogd -n -O /dev/stdout
+
+docker run --name l2tp --network cluster --ip 10.18.254.254 -p 39723:1723
+
+# docker run --name pptp-vpn --network cluster --ip 10.18.254.254  -p 39723:1723  --privileged -it alpine:3.7 sh
+
+# docker run --name pptp.test -d --privileged -p 39723:1723 -v /opt/pptpd.conf:/etc/pptpd.conf -v /opt/chap-secrets:/etc/ppp/chap-secrets mobtitude/vpn-pptp
+
+
+docker run \
+    --name l2tp-ipsec-vpn-server \
+    --env-file ./vpn.env \
+    -p 39500:500/udp \
+    -p 39501:4500/udp \
+    -v /lib/modules:/lib/modules:ro \
+    -d --privileged \
+    fcojean/l2tp-ipsec-vpn-server
