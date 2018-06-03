@@ -8,10 +8,12 @@ Dockerfile
 ### CentOS7
 [`zingsono/centos:7`](https://hub.docker.com/r/zingsono/centos)   ([centos/7/Dockerfile](https://github.com/zingson/Docker/tree/master/zingsono/centos/7/Dockerfile))    
 
+
 ### Openjdk
     
 [`zingsono/openjdk:1.8-jdk`](https://hub.docker.com/r/zingsono/openjdk)     ([openjdk/1.8-jdk/Dockerfile](https://github.com/zingson/Docker/tree/master/zingsono/openjdk/1.8-jdk/Dockerfile))     
 [`zingsono/openjdk:1.8-jre`](https://hub.docker.com/r/zingsono/openjdk)     ([openjdk/1.8-jre/Dockerfile](https://github.com/zingson/Docker/tree/master/zingsono/openjdk/1.8-jre/Dockerfile))    
+
 
 ### Elastic
 [`zingsono/elasticsearch:6.2.4`](https://hub.docker.com/r/zingsono/elasticsearch)     ([elasticsearch/6.2.4/Dockerfile](https://github.com/zingson/Docker/tree/master/zingsono/elasticsearch/6.2.4/Dockerfile))      
