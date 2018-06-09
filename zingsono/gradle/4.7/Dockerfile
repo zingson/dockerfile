@@ -9,3 +9,5 @@ ENV PATH=$PATH:$GRADLE
 
 WORKDIR /gradle/
 RUN yum install -y unzip && curl -o gradle.zip https://downloads.gradle.org/distributions/$VERSION-bin.zip && unzip ./gradle.zip && rm -f gradle.zip
+
+WORKDIR /
