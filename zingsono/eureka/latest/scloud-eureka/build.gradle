@@ -26,8 +26,9 @@ repositories {
 dependencies {
     compile 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
 }
-jar {
+
+bootJar {
     manifest {
-        attributes 'Main-Clas': 'io.ms.scloud.eureka.Application'
+        attributes 'Start-Class': 'io.ms.scloud.eureka.Application'
     }
 }

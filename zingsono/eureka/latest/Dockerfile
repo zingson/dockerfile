@@ -5,7 +5,7 @@ LABEL version="2.0.0.RC1" description="spring-netflix-eureka-server"
 
 WORKDIR /eureka/scloud-eureka
 COPY scloud-eureka/* ./
-RUN gradle clean bootJar \
+RUN gradle clean build bootJar \
         && mv build/libs/scloud-eureka-2.0.0.RC1.jar ../eureka.jar \
         && cd .. \
         && rm -rf scloud-eureka \
