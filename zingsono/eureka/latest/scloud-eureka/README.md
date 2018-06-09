@@ -2,7 +2,7 @@
 
 # 项目介绍
 
-Spring cloud Eureka 
+Spring cloud Eureka  , 当前项目仅用于构建Eureka可执行jar文件。
 
 
 # Docker Images
