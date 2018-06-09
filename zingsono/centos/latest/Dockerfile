@@ -4,4 +4,4 @@ FROM centos:7
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 # 安装常用工具包
-RUN yum install -y wget curl tar iproute
+RUN yum install -y wget curl tar iproute &&yum clean all
