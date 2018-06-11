@@ -1,7 +1,7 @@
 FROM zingsono/gradle:4.7
 MAINTAINER Zengs.<zingsono@gmail.com>
 
-LABEL version="2.0.0.RC1" description="spring-netflix-eureka-server"
+LABEL Version="2.0.0.RC1" Description="spring-netflix-eureka-server"
 
 WORKDIR /eureka/scloud-eureka
 COPY scloud-eureka/* ./
