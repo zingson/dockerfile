@@ -5,10 +5,8 @@ Eureka Images 说明。
 ### 基础构建版本
   
 >zingsono/centos:7  
- zingsono/openjdk:1.8-jdk    
- zingsono/gradle:4.7  
-
-
+ zingsono/openjdk:1.8-jre
+ 
 ### 使用示例
 
 集群部署，集群使用hostname通信。  

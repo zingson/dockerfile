@@ -12,7 +12,7 @@ RUN cd scloud-eureka \
     && rm -rf /gradle && rm -rf /root/.gradle
 
 EXPOSE 8761
-
+RUN chmod +x docker-entrypoint.sh
 ENTRYPOINT ["docker-entrypoint.sh"]
 
 # docker build -t test/eureka:latest ./
