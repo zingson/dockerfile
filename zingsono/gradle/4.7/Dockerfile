@@ -11,3 +11,4 @@ WORKDIR /gradle/
 RUN yum install -y unzip && yum clean all \
     && curl -o gradle.zip https://downloads.gradle.org/distributions/$VERSION-bin.zip && unzip ./gradle.zip \
     && rm -f gradle.zip
+

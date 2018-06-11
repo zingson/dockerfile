@@ -9,7 +9,7 @@ RUN gradle clean build bootJar \
         && mv build/libs/scloud-eureka-2.0.0.RC1.jar ../eureka.jar && cd .. \
         && rm -rf /eureka/scloud-eureka \
         && rm -rf /gradle && rm -rf /root/.gradle
-
+WORKDIR /eureka/
 ENTRYPOINT ["java","-jar","eureka.jar"]
 
 # 使用示例
