@@ -20,9 +20,9 @@
 > docker run zingsono/jenkins:latest
 
 2. 挂载目录的方式
-> docker run --name jenkins.s -v /data:/var/jenkins_home --network cluster --hostname jenkins.s -p 8080:8080 -d zingsono/jenkins:latest
+> docker run --name jenkins.s -v /data:/var/jenkins_home -d zingsono/jenkins:latest
 
-3. 使用数据卷的方式
+3. 使用数据卷的方式，设置网络与端口（建议）
 > docker volume create jenkins_data
 > docker run --name jenkins.s -v jenkins_data:/var/jenkins_home --network cluster --hostname jenkins.s -p 8080:8080 -d zingsono/jenkins:latest
 
