@@ -5,7 +5,8 @@
 
 ### Simple Tags
 
-[`7`,`latest` (centos/7/Dockerfile)](https://github.com/zingsono/Docker/tree/master/zingsono/centos/7/Dockerfile)
+[`latest` (centos/latest/Dockerfile)](https://github.com/zingsono/Docker/tree/master/zingsono/centos/latest/Dockerfile)   
+[`7` (centos/7/Dockerfile)](https://github.com/zingsono/Docker/tree/master/zingsono/centos/7/Dockerfile)
 
 ### Example
 
