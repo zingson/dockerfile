@@ -1,6 +1,8 @@
 FROM zingsono/gradle:4.7
 MAINTAINER Zengs.<zingsono@gmail.com>
-LABEL name="jenkins" version="2.121.1" description="Jenkins"
+LABEL name="jenkins" version="2.121.1" description="Jenkins 官网：https://jenkins.io/"
+
+# FROM Centos:7  Gradle:4.7
 
 # Install Git Client
 RUN yum install -y git && yum clean all
