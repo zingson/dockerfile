@@ -7,7 +7,7 @@
 - Gradle4.7
 - Gti
 
-时区已经改为中国时间，已配置好Gradle、Git。   
+时区已经改为中国时间，已配置Gradle、Git。   
 
 默认端口：8080   
 数据目录：var/jenkins_home 
