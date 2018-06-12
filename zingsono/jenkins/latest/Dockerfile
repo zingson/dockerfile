@@ -11,5 +11,6 @@ WORKDIR /
 RUN curl -o jenkins.war http://mirrors.shu.edu.cn/jenkins/war-stable/2.121.1/jenkins.war
 
 VOLUME /var/jenkins_home
+EXPOSE 8080
 CMD ["java","-jar","jenkins.war"]
 
