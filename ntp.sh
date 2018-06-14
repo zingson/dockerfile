@@ -14,3 +14,4 @@ systemctl start ntpd
  systemctl restart ntpd
 # 手动同步时间
 ntpq -p
+
