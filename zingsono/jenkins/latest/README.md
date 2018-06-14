@@ -1,14 +1,12 @@
 # Jenkins 
 
-已安装 Gradle、Git ，时区为中国时间。
+自定义Jenkins镜像，已安装 Gradle、Git ，修改时区为中国时间。
 - CentOS7
 - Gradle4.7
 - Gti
 
-
-默认端口：8080   
+默认端口：80  
 数据目录：var/jenkins_home 
-
 
 ### Simple Tags
 
@@ -31,6 +29,22 @@
 ```
 > docker volume create jenkins_data
 > docker run --name jenkins.s -v jenkins_data:/var/jenkins_home --network cluster --hostname jenkins.s -p 8080:8080 -d zingsono/jenkins:latest
+```
+
+4. 使Jenkins可以运行docker命令,此方法适用于宿主机为Centos7系统  
+```
+> docker volume create jenkins_data
+> docker run --name jenkins.s  \
+    -v jenkins_data:/var/jenkins_home  \
+    -v /usr/lib64/libltdl.so.7:/usr/lib64/libltdl.so.7  \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v /usr/bin/docker:/usr/bin/docker \
+    --network cluster  \
+    --hostname jenkins.s  \
+    -p 8080:8080  \
+    --restart always  \
+    -d zingsono/jenkins:2.121 
+
 ```
 
 
