@@ -17,7 +17,7 @@ JAR_BOOT="java -jar $JAR_NAME \
 --spring.cloud.config.discovery.enabled=true \
 --eureka.client.fetch-registry=true  \
 --eureka.client.register-with-eureka=true \
---eureka.client.service-url.defaultZone=http://10.18.222.15:8761/eureka/,http://10.18.222.16:8761/eureka/ "
+--eureka.client.service-url.defaultZone=http://eureka.sc1:8761/eureka/,http://eureka.sc2:8761/eureka/ "
 echo "> $JAR_BOOT"
 
 ARGS="sh -c 'curl -s -O $JAR_URL && $JAR_BOOT'"
@@ -31,3 +31,5 @@ else
     echo "> Service Update: docker service update --force --update-parallelism 1 --update-delay 120s --args \"$ARGS\" $S_NAME"
     docker service update --force --update-parallelism 1 --update-delay 120s --args "$ARGS" $S_NAME
 fi
+
+echo " ^_^ *  ^_^ "
