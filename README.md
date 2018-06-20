@@ -1,7 +1,7 @@
 Dockerfile
 ====
 
-使用说明查看Github中 Dockerfile文件目录下`*.md`文件。  
+使用说明查看latest/Dockerfile文件目录下`README.md`文件。  
 
 记录项目运行环境常用镜像。
 

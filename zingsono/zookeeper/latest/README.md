@@ -1,6 +1,6 @@
-## zookeeper
+## Zookeeper:3.4.12
 
-默认端口：2181
+默认端口：2181     
 默认目录：/zookeeper/
 
 ### Simple Tags
@@ -15,7 +15,7 @@
 docker pull zingsono/zookeeper:latest
 
 docker volume create zookeeper 
-docker run --name zookeeper.sc -v zookeeper:/zookeeper/ -p 2181:2181  -it zingsono/zookeeper:latest
+docker run --name zookeeper.sc1 -v zookeeper:/zookeeper -p 2181:2181  -it zingsono/zookeeper:latest
 
 ```
 
