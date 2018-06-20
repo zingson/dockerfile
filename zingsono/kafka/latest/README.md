@@ -1,8 +1,6 @@
 ## Kafka
 
-
-zookpeere: *:2181/tcp
-kafka: *:9200/tcp
+kafka: *:9200/tcp  
 
 数据目录：/kafka/
 
@@ -14,4 +12,16 @@ kafka: *:9200/tcp
 
 ### Example
 
+```
+docker pull zingsono/kafka
+
+docker run --name kafka.sc1 -d zingsono/kafka:1.1.0
+```
+
+
+### Build
+```
+
+docker build -t zingsono/kafka:latest ./
+```
 
