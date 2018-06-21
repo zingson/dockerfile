@@ -15,13 +15,15 @@ kafka: *:9200/tcp
 ```
 docker pull zingsono/kafka
 
-docker run --name kafka.sc1 -d zingsono/kafka:1.1.0
+docker run --name kafka.sc1  -d zingsono/kafka:1.1.0
+
+docker run --name kafka.sc1 --network cluster -d zingsono/kafka:latest
 ```
 
 
 ### Build
 ```
 
-docker build -t zingsono/kafka:latest ./
+docker build --rm -t zingsono/kafka:latest ./
 ```
 
