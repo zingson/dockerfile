@@ -15,15 +15,17 @@ kafka: *:9200/tcp
 ```
 docker pull zingsono/kafka
 
-docker run --name kafka.sc1  -d zingsono/kafka:1.1.0
-
-docker run --name kafka.sc1 --network cluster -d zingsono/kafka:latest
+# 数据卷
+docker volume create kafka_1  
+# 启动zookeeper服务
+docker run --name kafka.zookeeper.sc1 -v kafka_1:/kafka --network cluster  -p 2181:2181 --restart always -d zingsono/kafka:1.1.0 bin/zookeeper-server-start.sh config/zookeeper.properties
+# 启动kafka服务
+docker run --name kafka.sc1 -v kafka_1:/kafka --network cluster  -p 9092:9092  --restart always -d zingsono/kafka:1.1.0 bin/kafka-server-start.sh config/server.properties
 ```
-
+使用kafka内置的zookeeper运行集群
 
 ### Build
 ```
-
 docker build --rm -t zingsono/kafka:latest ./
 ```
 
