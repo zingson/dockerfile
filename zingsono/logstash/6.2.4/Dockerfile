@@ -1,6 +1,6 @@
-FROM zingsono/centos:7
+FROM zingsono/openjdk:1.8-jre
 MAINTAINER Zengs.<zingsono@gmail.com>
-LABEL Description="FORM centos:7 . logstash"
+LABEL Description="FORM zingsono/openjdk:1.8-jre . logstash"
 
 WORKDIR /logstash
 
