@@ -18,3 +18,4 @@
 
 [ 2018-06-12 ]  
 - 设置时区 `RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime` ,使系统时间与中国时间同步；
+- 设置中文 `RUN echo 'LANG="zh_CN.UTF-8"' > /etc/locale.conf && source /etc/locale.conf` ,默认系统语言是英文，导致中文控制台乱码
