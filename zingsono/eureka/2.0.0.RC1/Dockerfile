@@ -5,7 +5,7 @@ LABEL Version="2.0.0.RC1" Description="spring-netflix-eureka-server"
 
 WORKDIR /
 COPY ./ /
-RUN  curl -o eureka.jar http://zingson.com/download/eureka/scloud-eureka-2.0.0.RC1.jar
+RUN  curl -o eureka.jar http://jar.s.zingson.com/download/eureka/scloud-eureka-2.0.0.RC1.jar
 
 EXPOSE 8761
 
