@@ -1,4 +1,4 @@
-FROM zingsono/openjdk:8-jre
+FROM mszs/openjdk:8-jre
 MAINTAINER Zengs.<zingsono@gmail.com>
 LABEL name="zookeeper" version="3.4.12" description="Zookeeper images"
 

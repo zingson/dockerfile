@@ -1,4 +1,4 @@
-FROM zingsono/openjdk:1.8-jre
+FROM mszs/openjdk:1.8-jre
 MAINTAINER Zengs.<zingsono@gmail.com>
 
 WORKDIR /es
