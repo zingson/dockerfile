@@ -32,6 +32,6 @@ Jenkins 2.204.1-centos
     --hostname jenkins.s  \
     -p 8080:8080  \
     --restart always  \
-    -d mszs/jenkins:2.204.1-centos
+    -d mszs/jenkins:lts
 
 ```
