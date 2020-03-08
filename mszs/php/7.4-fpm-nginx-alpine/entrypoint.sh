@@ -51,5 +51,5 @@ http {
 }
 EOF
 
-nginx -s reopen
+nginx
 docker-php-entrypoint php -a
