@@ -52,4 +52,4 @@ http {
 EOF
 
 nginx
-docker-php-entrypoint php -a
+php-fpm
