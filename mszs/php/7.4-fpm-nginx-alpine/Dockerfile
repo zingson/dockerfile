@@ -9,7 +9,7 @@ RUN apk update && apk add git nginx curl tzdata && cp -r -f /usr/share/zoneinfo/
 
 COPY tz.php ./
 COPY entrypoint.sh /usr/local/bin/
-ENTRYPOINT ["entrypoint"]
-CMD ["-s"]
+RUN chmod +x /usr/local/bin/entrypoint.sh
+ENTRYPOINT ["entrypoint.sh"]
 
 # docker run --name phptest -p 9009:80 -itd php:7.4-fpm-nginx-alpine /bin/sh
