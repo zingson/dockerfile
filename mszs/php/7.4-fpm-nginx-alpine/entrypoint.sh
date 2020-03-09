@@ -39,7 +39,7 @@ http {
     #access_log  /var/log/nginx/host.access.log  main;
 
     location / {
-        index  index.html index.htm;
+        index  index.html index.htm index.php;
     }
     location ~ \.php$ {
         fastcgi_pass   127.0.0.1:9000;
