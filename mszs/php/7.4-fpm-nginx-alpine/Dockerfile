@@ -2,6 +2,8 @@ FROM php:7.4.3-fpm-alpine3.11
 RUN apk update && apk add git nginx curl tzdata && cp -r -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai" > /etc/timezone && apk del tzdata
 # /var/www/html/
 
+USER www-data
+
 # git项目地址
 #ENV GIT_URL ""
 # git项目版本
