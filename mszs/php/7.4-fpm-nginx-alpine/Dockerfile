@@ -9,7 +9,7 @@ RUN apk update && apk add git nginx curl tzdata && cp -r -f /usr/share/zoneinfo/
 
 COPY tz.php ./
 COPY entrypoint.sh /usr/local/bin/
-RUN chmod u+x www-data /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
 USER www-data
 ENTRYPOINT ["entrypoint.sh"]
 
