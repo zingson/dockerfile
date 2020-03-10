@@ -10,8 +10,7 @@ RUN apk update && apk add git nginx curl tzdata && cp -r -f /usr/share/zoneinfo/
 COPY tz.php ./
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY entrypoint.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/entrypoint.sh
-USER www-data
+RUN chmod +x /usr/local/bin/entrypoint.sh  && chmod 777 /var/www/html/
 ENTRYPOINT ["entrypoint.sh"]
 
 # docker run --name phptest -p 9009:80 -itd registry.cn-hangzhou.aliyuncs.com/mszs/php:7.4-fpm-nginx-alpine
