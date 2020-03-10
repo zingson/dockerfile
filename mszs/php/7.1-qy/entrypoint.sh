@@ -16,8 +16,7 @@ if [ $GIT_URL ]; then
     git checkout -b $GIT_TAG
   fi
 fi
-/bin/cp -f /etc/micro/${pname}.env /var/www/html/${pname}/.env
-/bin/cp -f /var/www/html/tz.php /var/www/html/${pname}/tz.php
+/bin/cp -f /etc/${pname}/.env /var/www/html/${pname}/.env
 chmod -R 777 /var/www/html/
 nginx
 php-fpm
