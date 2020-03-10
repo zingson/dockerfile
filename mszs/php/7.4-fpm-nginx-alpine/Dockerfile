@@ -8,6 +8,7 @@ RUN apk update && apk add git nginx curl tzdata && cp -r -f /usr/share/zoneinfo/
 #ENV GIT_TAG ""
 
 COPY tz.php ./
+COPY nginx.conf /etc/nginx/nginx.conf
 COPY entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/entrypoint.sh
 USER www-data
