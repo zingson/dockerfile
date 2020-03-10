@@ -16,6 +16,6 @@ if [ $GIT_URL ]; then
     git checkout -b $GIT_TAG
   fi
 fi
-
+chmod -R 777 /var/www/html/
 nginx
 php-fpm
