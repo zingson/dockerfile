@@ -1,6 +1,4 @@
 
-
-
 Centos yum配置：http://www.cnblogs.com/insoleis/p/5587691.html
 
 ```text
